@@ -29,7 +29,11 @@ namespace Log4netTest
 				sw.Stop();
 				Console.WriteLine($"线程{i}写入日志结束, 共用时{sw.ElapsedMilliseconds}毫秒");
 			};
+			Stopwatch watch = new Stopwatch();
+			watch.Start();
 			Parallel.For(0, 10, task);
+			watch.Stop();
+			Console.WriteLine($"全部日志写入队列, 共用时{watch.ElapsedMilliseconds}毫秒");
 			Console.ReadKey();
 		}
 	}
